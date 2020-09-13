@@ -5,12 +5,12 @@
 #include <iostream>
 #include <exception>
 
-class RangeException : public std::exception{
+class RangeException : public std::out_of_range {
 private:
 	std::size_t dimensioin{ 0 };
 	int index{ 0 };
 public:
-	RangeException(std::size_t dimension, const int index) {
+	RangeException(std::size_t dimension, const int index) : out_of_range("Index exceeds  Vector dimension") {
 		this->dimensioin = dimensioin;
 		this->index = index;
 	}
@@ -23,5 +23,5 @@ public:
 	const char* what() const throw ()
 	{
 		return "Index out of range";
-	} 
+	}
 };
